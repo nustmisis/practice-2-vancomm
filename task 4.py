@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Взгляните на показанный ниже
-код, в котором используется цикл while и флаг found
-для поиска в списке тепеней 2 занания 2, вовзевдённую в пятую степень
+Взгляните на показанный ниже код, в котором используется цикл while и флаг
+found для поиска в списке cтепеней 2 значения 2, возведённого в пятую степень.
 
 @author: workk
 """
@@ -53,17 +52,15 @@ def old():
 
 
 def main():
-    nums = [1, 2, 4, 8, 16, 32, 64]
-    x = 5
+    nums = [2**i for i in range(7)]
 
-    power_of_2 = 2**x
+    x = int(input())
 
-    for i, n in enumerate(nums):
-        if n == power_of_2:
-            print(i)
-            return
-
-    print("not found")
+    try:
+        i = nums.index(2**x)
+        print(i)
+    except ValueError:
+        print("not found")
 
 
 if __name__ == "__main__":

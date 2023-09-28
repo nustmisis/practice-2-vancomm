@@ -3,7 +3,7 @@
 Задана строка S и символ С. За один ход можно поменять местами два соседних
 символа. Сколько потребуется ходов чтобы переместить все символы С в строке
 в начало строки, не меняя при этом порядок следования между остальными
-символами.
+символами?
 
 Например, имеется строка abcabcabc, и задан символ b. После перемещения всех
 символов b в начало строки, получится строка bbbacacac, на это уйдёт 9 ходов,
@@ -11,7 +11,7 @@
 
 1. bacabcabc
 2. bacbacabc
-3. batcacabe
+3. babcacabe
 4. bbacacabc
 5. bbacacbac
 6. bbacabcac 
@@ -45,11 +45,22 @@
 
 
 def solve(text: str, target: str) -> int:
-    for char in text:
-        if char != target:
+    steps = 0
+    offset = 0
+
+    for i in range(len(text)):
+        if text[i] != target:
             continue
 
-    return 0
+        if i != offset:
+            text = text[:offset] + target + text[offset:i] + text[i + 1 :]
+
+            steps += i - offset
+            print(text)
+
+        offset += 1
+
+    return steps
 
 
 def main():

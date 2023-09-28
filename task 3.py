@@ -18,24 +18,15 @@ Created on Fri Sep 22 15:05:53 2023
 import re
 
 
-old_pattern_re = re.compile(r"^[А-Я]{3}\d{3}$")
-new_pattern_re = re.compile(r"^\d{4}[А-Я]{3}$")
-
-
-def is_old_pattern(plate: str) -> bool:
-    return bool(old_pattern_re.match(plate))
-
-
-def is_new_pattern(plate: str) -> bool:
-    return bool(new_pattern_re.match(plate))
-
-
 def main():
+    old_pattern_re = re.compile(r"^[А-Я]{3}\d{3}$")
+    new_pattern_re = re.compile(r"^\d{4}[А-Я]{3}$")
+
     plate = input("Введите номерной знак: ")
 
-    if is_old_pattern(plate):
+    if old_pattern_re.match(plate):
         plate_status = "соответствует старому формату"
-    elif is_new_pattern(plate):
+    elif new_pattern_re.match(plate):
         plate_status = "соответствует новому формату"
     else:
         plate_status = "не соответствует ни одному из известных форматов"
