@@ -54,9 +54,7 @@ def solve(text: str, target: str) -> int:
 
         if i != offset:
             text = text[:offset] + target + text[offset:i] + text[i + 1 :]
-
             steps += i - offset
-            print(text)
 
         offset += 1
 
@@ -65,7 +63,6 @@ def solve(text: str, target: str) -> int:
 
 def main():
     text, target = input().split()
-
     print(solve(text, target))
 
 
